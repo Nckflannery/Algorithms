@@ -3,7 +3,26 @@
 import math
 
 def recipe_batches(recipe, ingredients):
-  pass 
+  recipe_items = []
+  recipe_amounts = []
+  inv_items = []
+  inv_amounts = []
+  for key, value in recipe.items():
+    recipe_items.append(key)
+    recipe_amounts.append(value)
+  for key, value in ingredients.items():
+    inv_items.append(key)
+    inv_amounts.append(value)
+  if not all(i in inv_items for i in recipe_items):
+    return 0
+  if all(i in inv_items for i in recipe_items):
+    for i, j in zip(recipe_amounts, inv_amounts):
+      if i > j:
+        return 0
+      if i < j:
+        counts = []
+        counts.append(j // i) 
+        return min(counts) 
 
 
 if __name__ == '__main__':
