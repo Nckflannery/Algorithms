@@ -3,7 +3,18 @@
 import sys
 
 def making_change(amount, denominations):
-  pass 
+  # array to hold combinations for each amount
+  combs = [0] * (amount + 1)
+  # base case, i.e. for 0 amount, return 1
+  combs[0] = 1
+
+  # iterate through denominations
+  for i in denominations:
+    # then iterate through up to the amount to see which denoms can add up to the amount  
+    for j in range(i, amount+1):
+      if i <= j:
+        combs[j] += combs[j - i]
+  return combs[amount]
 
 
 if __name__ == "__main__":
