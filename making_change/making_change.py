@@ -13,7 +13,6 @@ def making_change(amount, denominations):
     # then iterate through up to the amount to see which denoms can add up to the amount  
     for j in range(i, amount+1):
       if i <= j:
-        # assign the value to the index j
         combs[j] += combs[j - i]
   return combs[amount]
 

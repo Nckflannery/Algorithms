@@ -6,17 +6,20 @@ import sys
 # a solution that is more efficient than the naive 
 # recursive solution
 
-# def eating_cookies(n, cache=None):
-#   # Naive recursive solution, no caching
-#   if n < 0:
-#     return 0
-#   elif n == 0: 
-#     return 1
-#   else:
-#     return eating_cookies(n-1) + eating_cookies(n-2) + eating_cookies(n-3)
+def eating_cookies(n, cache={0:1, 1:1, 2:2}):
+  # Recursive solution with caching
+  # if n < 0:
+  #   return 0
+  # elif n == 0: 
+  #   return 1
+  if n in cache:
+    return cache[n]
+  else:
+    cache[n] = eating_cookies(n-1) + eating_cookies(n-2) + eating_cookies(n-3)
+    return cache[n]
 
 # New method:
-def eating_cookies(n, cache=None):
+def eating_cookies_non_rec(n):
 
   if n == 0 or n == 1:
     return 1
